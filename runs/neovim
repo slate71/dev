@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo "Intalling neovim"
+brew install neovim
+
+#Primagean's install instructions
+
+#git clone -b v0.10.1 https://github.com/neovim/neovim.git $HOME/dev/neovim
+#brew install ninja cmake gettext curl
+
+#cd $HOME/dev/neovim
+#make CMAKE_BUILD_TYPE=RelWithDebInfo
+#sudo make install
+
