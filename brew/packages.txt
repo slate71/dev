@@ -11,3 +11,5 @@ awscli
 postgresql
 deno
 oven-sh/bun/bun
+koekeishiya/formulae/yabai
+koekeishiya/formulae/skhd

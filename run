@@ -52,7 +52,6 @@ install_brew_packages() {
     done
 }
 
-# Should this be the beginning of separate scripts?
 setup_zsh() {
     log "Setting up zsh..."
     if [[ $dry_run == "0" ]]; then

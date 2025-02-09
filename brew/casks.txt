@@ -1,5 +1,7 @@
 ghostty
 visual-studio-code
+cursor
+zed
 docker
 postman
 notion
