@@ -21,20 +21,61 @@ log() {
     fi
 }
 
-log "RUN: $script_dir -- grep: $grep"
-
-cd $script_dir
-scripts=$(find ./runs -maxdepth 1 -mindepth 1 -type f -perm +111)
-
-for script in $scripts; do
-    if log "$script" | grep -qv "$grep"; then
-        log "grep \"$grep\" filtered out $script"
-        continue
+check_homebrew() {
+    if ! command -v brew > /dev/null; then
+        log "Homebrew is not installed, installing..."
+        if [[ $dry_run == "0" ]]; then
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        fi
+    else
+        log "Homebrew is already installed"
     fi
+}
 
-    log "running script: $script, dry_run: $dry_run"
+install_brew_packages() {
+    log "Installing brew packages..."
+    packages=$(cat $script_dir/brew/packages.txt)
+    for package in $packages; do
+        log "Installing package: $package..."
+        if [[ $dry_run == "0" ]]; then
+            brew install $package
+        fi
+    done
 
+    log "Installing brew cask packages..."
+    cask_packages=$(cat $script_dir/brew/casks.txt)
+    for package in $cask_packages; do
+        log "Installing cask package: $package..."
+        if [[ $dry_run == "0" ]]; then
+            brew install --cask $package
+        fi
+    done
+}
+
+# Should this be the beginning of separate scripts?
+setup_zsh() {
+    log "Setting up zsh..."
     if [[ $dry_run == "0" ]]; then
-        $script
+        log "Change shell to zsh..."
+        sudo chsh -s $(which zsh)
+        log "Installing oh-my-zsh..."
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     fi
-done
+}
+
+setup_git() {
+    log "Setting up git..."
+    if [[ $dry_run == "0" ]]; then
+        git config --global user.name "Lukas Andersen"
+        git config --global user.email "luke@slate71.com"
+    fi
+}
+
+run() {
+    check_homebrew
+    install_brew_packages
+    setup_zsh
+    setup_git
+}
+
+run

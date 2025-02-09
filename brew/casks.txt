@@ -1,0 +1,5 @@
+ghostty
+visual-studio-code
+docker
+postman
+notion

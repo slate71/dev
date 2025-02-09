@@ -1,0 +1,13 @@
+zsh
+git
+node
+nvm
+python
+typescript
+go
+rust
+tmux
+awscli
+postgresql
+deno
+oven-sh/bun/bun
