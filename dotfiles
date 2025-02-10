@@ -48,6 +48,5 @@ copy_file() {
     fi
 }
 
-copy_dir .config $HOME/.config
-copy_file .zsh_fake_profile $HOME/.zsh_fake_profile
-
+# copy_dir .config $HOME/.config
+copy_file ./env/.zshrc $HOME/.zshrc

@@ -65,7 +65,9 @@ setup_zsh() {
 setup_git() {
     log "Setting up git..."
     if [[ $dry_run == "0" ]]; then
+        log "git config --global user.name \"Lukas Andersen\""
         git config --global user.name "Lukas Andersen"
+        log "git config --global user.email \"luke@slate71.com\""
         git config --global user.email "luke@slate71.com"
     fi
 }
