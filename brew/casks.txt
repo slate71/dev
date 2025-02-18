@@ -5,8 +5,5 @@ zed
 docker
 postman
 notion
-slack
 whimsical
-zoom
-1password
-google-chrome
+intellij-idea

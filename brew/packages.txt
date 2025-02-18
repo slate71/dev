@@ -15,3 +15,5 @@ oven-sh/bun/bun
 koekeishiya/formulae/yabai
 koekeishiya/formulae/skhd
 docker
+kotlin
+openjdk
