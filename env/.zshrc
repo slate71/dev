@@ -102,7 +102,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Git aliases
-alias git-log="git log --graph --pretty --oneline --decorate"
+alias gl="git log --graph --pretty --oneline --decorate"
+alias gs="git status"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
